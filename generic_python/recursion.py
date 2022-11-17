@@ -1,5 +1,5 @@
 #Simple recursion to unwrap an integer list elements
-a = [[1],[2],[3,4,[5,6]],[[[[[[[[[[[[[7]]]]]],8]]]]]]]]
+input_list = [[1],[2],[3,4,[5,6]],[[[[[[[[[[[[[7]]]]]],8]]]]]]]]
 
 
 def unwrap(n):
@@ -7,14 +7,15 @@ def unwrap(n):
         return n
     if type(n) == type(list()):
         if len(n) == 1:
-            a = unwrap(n[0])
-            a = [a] if type(a) != type(list()) else a
-            return a
+            unwraped_element = unwrap(n[0])
+            unwraped_element = [unwraped_element] if type(unwraped_element) != type(list()) else unwraped_element
+            return unwraped_element
         else:
-            a = unwrap(n[0])
-            a = [a] if type(a) != type(list()) else a
-            b = unwrap(n[1:])
-            a.extend(b)
-            return a
+            unwraped_element = unwrap(n[0])
+            unwraped_element = [unwraped_element] if type(unwraped_element) != type(list()) else unwraped_element
+            unwraped_remining = unwrap(n[1:])
+            unwraped_element.extend(unwraped_remining)
+            return unwraped_element
 
-print(unwrap(a))
+if __name__ == "__main__":
+    print(unwrap(input_list))
