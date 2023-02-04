@@ -30,23 +30,13 @@ class LinearRegression:
 
 
 
+if __name__ == "__main__":
+    X, y = datasets.make_regression(n_samples=100, n_features=1, noise=20, random_state=4)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1234)
+        
+    reg = LinearRegression(lr=0.5,n_iters=1000)
+    reg.fit(X_train,y_train)
+    predictions = reg.pred(X_test)
 
-X, y = datasets.make_regression(n_samples=100, n_features=1, noise=20, random_state=4)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=1234)
-    
-reg = LinearRegression(lr=0.5,n_iters=1000)
-reg.fit(X_train,y_train)
-predictions = reg.pred(X_test)
-
-mse = mean_squared_error(y_pred=predictions, y_true=y_test)
-print("Measn Sq Error: " + str(mse))
-
-
-import matplotlib.pyplot as plt
-y_pred_line = reg.pred(X)
-cmap = plt.get_cmap('viridis')
-fig = plt.figure(figsize=(8,6))
-m1 = plt.scatter(X_train, y_train, color=cmap(0.9), s=10)
-m2 = plt.scatter(X_test, y_test, color=cmap(0.5), s=10)
-plt.plot(X, y_pred_line, color='black', linewidth=2, label='Prediction')
-plt.show()
+    mse = mean_squared_error(y_pred=predictions, y_true=y_test)
+    print("Measn Sq Error: " + str(mse))
