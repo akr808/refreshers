@@ -10,9 +10,9 @@ def fun_type1(*args,**kwargs):
     '''A function that just prints a text'''
     print("This is an empty function withnout any parameter")
 
-def fun_type2(*args,**kwargs)->None:
+def fun_type2(name = "",*args,**kwargs)->None:
     '''A function that accepts a param and prints a message'''
-    print("Welcome {name} to this class, this is a function with a string paramater".format(**kwargs))
+    print("Welcome {0} to this class, this is a function with a string paramater".format(name))
 
 
 if __name__ == '__main__':
