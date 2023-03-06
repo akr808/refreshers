@@ -6,6 +6,8 @@ def unwrap(lst):
     #Returns:
     # A list of elemts that is unwrapped from lst
     if isinstance(lst,list):
+        if lst is None or lst == []:
+            return []
         if len(lst) == 1:
             return unwrap(lst[0]) if isinstance(lst[0],list) else lst
         else:
@@ -19,3 +21,7 @@ def unwrap(lst):
 if __name__ == "__main__":
     print(unwrap([1, 2, 3, [4, [[[[[[5]]]]]]], [[6, 7], 8], 9]))
     #Output:[1, 2, 3, 4, 5, 6, 7, 8, 9]
+    print(unwrap([1, 3, 9]))
+    #Output:[1, 3, 9]
+    print(unwrap([]))
+    #Output:[]
