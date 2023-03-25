@@ -30,3 +30,4 @@ df.groupby("country").points.agg(['sum','min','max','mean','median'])      #Func
 df.groupby(["country","points"]).price.agg(['sum','min','max','mean','median']) #Group by multiple columns
 
 
+
